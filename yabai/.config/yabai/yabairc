@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Enable yabai
+yabai -m signal --add event window_created_for_app --action "yabai -m window --focus last"
+yabai -m signal --add event application_launched --action "yabai -m space --focus last; yabai -m window --focus last"
+
+# Set default layout to bsp
+yabai -m config layout bsp
+
+# Set padding and gap
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+# Enable window borders -> requires SIP
+# yabai -m config window_border on
+# yabai -m config active_window_border_color 0xff388E83
+# yabai -m config normal_window_border_color 0xff2e3440
+# yabai -m config window_border_width 4
+# yabai -m config window_border_radius 8
+
+
+# Make yabai manage all spaces
+# yabai -m signal --add event space_changed --action "yabai -m space --layout bsp"
