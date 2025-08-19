@@ -41,6 +41,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" Folder structure
+Plug 'nvim-tree/nvim-tree.lua'
+
+" View buffers
+Plug 'akinsho/bufferline.nvim'
+
 " Debugging tools
 Plug 'puremourning/vimspector'
 
@@ -66,6 +72,20 @@ let g:slime_target = "tmux"
 " nertw as NERDtree style
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+
+" nvim-tree
+lua << EOF
+-- setup nvim-tree
+require("nvim-tree").setup()
+
+-- setup keymap to toggle nvim-tree
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+EOF
+
+" view buffers
+lua << EOF
+require("bufferline").setup({})
+EOF
 
 " debugging
 let g:vimspector_enable_mappings = 'HUMAN'

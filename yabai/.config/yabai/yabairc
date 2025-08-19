@@ -8,19 +8,27 @@ yabai -m signal --add event application_launched --action "yabai -m space --focu
 yabai -m config layout bsp
 
 # Set padding and gap
-yabai -m config top_padding 10
-yabai -m config bottom_padding 10
-yabai -m config left_padding 10
-yabai -m config right_padding 10
-yabai -m config window_gap 10
+yabai -m config top_padding 20
+yabai -m config bottom_padding 20
+yabai -m config left_padding 20
+yabai -m config right_padding 20
+yabai -m config window_gap 20
 
-# Enable window borders -> requires SIP
-# yabai -m config window_border on
-# yabai -m config active_window_border_color 0xff388E83
-# yabai -m config normal_window_border_color 0xff2e3440
-# yabai -m config window_border_width 4
-# yabai -m config window_border_radius 8
+# Apps specifics
+yabai -m rule --add app='System Settings' manage=off
+yabai -m rule --add app='Calculator' manage=off
 
+# ----
+# Regras para alternar layouts automaticamente
+# ----
 
-# Make yabai manage all spaces
-# yabai -m signal --add event space_changed --action "yabai -m space --layout bsp"
+yabai -m signal --add event="window_created|window_destroyed" \
+    action="NUM_WINDOWS=$(yabai -m query --windows --space | jq '. | length'); \
+    if [ \"$NUM_WINDOWS\" -gt 1 ]; then \
+        yabai -m space --layout bsp; \
+    elif [ \"$NUM_WINDOWS\" -eq 1 ]; then \
+        yabai -m space --layout float; \
+        yabai -m window --toggle float; \
+        yabai -m window --center; \
+    fi"
+
