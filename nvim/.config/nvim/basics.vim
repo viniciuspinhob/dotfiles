@@ -2,6 +2,7 @@ set nocompatible
 filetype off 
 syntax on
 
+set mouse=a
 set guicursor=
 set termguicolors
 set noshowmatch
