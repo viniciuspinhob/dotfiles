@@ -12,4 +12,9 @@ let g:gruvbox_invert_selection='0'
 "lightline colorscheme (assuming lightline.vim is installed via plug.vim)
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
+      \ 'tabline': {
+      \   'left': [ ['tabs'] ],
+      \   'right': [ ['close'] ]
+      \ },
       \ }
+set showtabline=2

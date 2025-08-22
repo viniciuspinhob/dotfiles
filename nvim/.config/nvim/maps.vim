@@ -40,7 +40,6 @@ nmap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nmap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " debugging mappings
-
 nmap <leader>dl :call vimspector#Launch()<cr>
 nmap <leader>dr :VimspectorReset<cr>
 nmap <leader>de :VimspectorEval
@@ -48,3 +47,20 @@ nmap <leader>dw :VimspectorWatch
 nmap <leader>do :VimspectorShowOutput
 nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
+
+" Tab management mappings
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>tx :tabclose<CR>
+nnoremap <leader>to :tabonly<CR>
+nnoremap <leader>tm :tabmove<CR>
+
+" Tab navigation (alternative to gt/gT)
+nnoremap <leader>th :tabprev<CR>
+nnoremap <leader>tl :tabnext<CR>
+
+" Or use numbers to jump to specific tabs
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt

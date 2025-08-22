@@ -46,9 +46,14 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 " View buffers
 Plug 'akinsho/bufferline.nvim'
+" For nice icons
+Plug 'nvim-tree/nvim-web-devicons' 
 
 " Debugging tools
 Plug 'puremourning/vimspector'
+
+" Toggle comments
+Plug 'numToStr/Comment.nvim'
 
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 
@@ -59,6 +64,30 @@ call plug#end() " This line *must* be here to load the plugins and set runtime p
 " telescope fzy native
 lua << EOF
 require('telescope').load_extension('fzy_native')
+EOF
+
+"Telescope hidden files
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    file_ignore_patterns = {"node_modules", ".git/", ".venv/", ".env/"},
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden"
+    },
+  },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  }
+}
 EOF
 
 " todo-comments.nvim setup
@@ -81,10 +110,16 @@ require("nvim-tree").setup()
 -- setup keymap to toggle nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 EOF
+autocmd TabNewEntered * NvimTreeOpen
 
 " view buffers
 lua << EOF
 require("bufferline").setup({})
+EOF
+
+" Toggle comments
+lua << EOF
+require('Comment').setup()
 EOF
 
 " debugging
