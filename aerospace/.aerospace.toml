@@ -73,3 +73,10 @@ k = 'resize height -50'
 l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
+
+# --- Regras para Aplicativos Flutuantes (Whitelist) ---
+# Força janelas de aplicativos específicos a sempre abrirem no modo flutuante.
+
+[[on-window-detected]]
+if.app-name-regex-substring = '(?i)System Settings|bitwarden|Calculator|Archive Utility'
+run = 'layout floating'
