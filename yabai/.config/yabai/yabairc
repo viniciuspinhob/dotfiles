@@ -17,7 +17,7 @@ yabai -m config window_gap 20
 # Apps specifics
 yabai -m rule --add app='System Settings' manage=off
 yabai -m rule --add app='Calculator' manage=off
-
+yabai -m rule --add app='Bitwarden' manage=off
 # ----
 # Regras para alternar layouts automaticamente
 # ----
