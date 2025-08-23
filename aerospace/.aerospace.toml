@@ -1,0 +1,75 @@
+# AeroSpace Configuration File
+# Place this file at: ~/.aerospace.toml
+
+# Basic settings
+start-at-login = true
+default-root-container-layout = 'tiles'
+
+# Enable normalization (recommended)
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Gaps configuration
+[gaps]
+inner.horizontal = 20
+inner.vertical = 20
+outer.left = 20
+outer.bottom = 20
+outer.top = 20
+outer.right = 20
+
+# Key bindings
+[mode.main.binding]
+
+# Focus on windows (Alt + hjkl)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Move windows (Alt + Shift + hjkl)
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Workspace navigation (Alt + number)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+# Move window to workspace (Alt + Shift + number)
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+# Layout controls
+alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling
+alt-f = 'fullscreen'                        # Toggle fullscreen
+alt-t = 'layout tiles'                      # Force tiles layout
+
+# Manual tiling toggle for current window
+alt-shift-t = 'layout tiling'
+
+# Resize mode
+alt-r = 'mode resize'
+
+# Additional useful bindings
+alt-enter = 'exec-and-forget open -n /Applications/Terminal.app'
+alt-shift-q = 'close'
+
+# Reload config
+alt-shift-r = 'reload-config'
+
+# Resize mode bindings
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
