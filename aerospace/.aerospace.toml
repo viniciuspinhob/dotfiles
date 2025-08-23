@@ -9,6 +9,10 @@ default-root-container-layout = 'tiles'
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
+# Automatically start AeroSpace in a certain mode
+after-login-command = []
+after-startup-command = []
+
 # Gaps configuration
 [gaps]
 inner.horizontal = 20
@@ -50,10 +54,6 @@ alt-shift-5 = 'move-node-to-workspace 5'
 # Layout controls
 alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling
 alt-f = 'fullscreen'                        # Toggle fullscreen
-alt-t = 'layout tiles'                      # Force tiles layout
-
-# Manual tiling toggle for current window
-alt-shift-t = 'layout tiling'
 
 # Resize mode
 alt-r = 'mode resize'
