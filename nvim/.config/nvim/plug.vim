@@ -13,6 +13,8 @@ Plug 'morhetz/gruvbox'
 "  \ 'branch': 'next',
 "  \ 'do': 'bash install.sh',
 "  \ }
+" Autocompletion and IDE features
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autocompletion and IDE features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -63,6 +65,9 @@ call plug#end() " This line *must* be here to load the plugins and set runtime p
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
 " so the plugins they configure are already available.
+
+" Python LSP
+let g:coc_global_extensions = ['coc-pyright']
 
 " telescope fzy native
 lua << EOF

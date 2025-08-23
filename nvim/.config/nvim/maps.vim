@@ -64,3 +64,13 @@ nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
+
+" Code navigation
+nmap <silent> gd <Cmd>call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> gv <Cmd>leftabove vsplit<CR><Cmd>call CocAction('jumpDefinition')<CR>
+nmap <silent> gs <Cmd>botright split<CR><Cmd>call CocAction('jumpDefinition')<CR>
+nmap <silent> gr <Cmd>call CocAction('jumpReferences', 'tabe')<CR>
+nmap <silent> gi <Cmd>call CocAction('jumpImplementation', 'tabe')<CR>
+nmap <silent> giv <Cmd>leftabove vsplit<CR><Cmd>call CocAction('jumpImplementation')<CR>
+nmap <silent> gy <Cmd>call CocAction('jumpTypeDefinition', 'tabe')<CR>
+nmap <silent> gyv <Cmd>leftabove vsplit<CR><Cmd>call CocAction('jumpTypeDefinition')<CR>
