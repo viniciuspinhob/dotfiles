@@ -55,6 +55,9 @@ Plug 'puremourning/vimspector'
 " Toggle comments
 Plug 'numToStr/Comment.nvim'
 
+" Markdown Rendering
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 
 " --- Plugin-specific configuration (after plugins are loaded) ---
