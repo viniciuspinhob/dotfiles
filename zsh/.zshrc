@@ -18,8 +18,6 @@ source $ZSH/oh-my-zsh.sh
 source /Users/viniciuspinhob/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 
-eval $(thefuck --alias)
-
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/viniciuspinhob/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
