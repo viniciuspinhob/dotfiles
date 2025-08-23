@@ -81,47 +81,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Unix General
-alias shn="sudo hostname -s 127.0.0.1"
-alias cdd="cd  ~/Developer"
-alias cddd="cd  ~/Developer/dede"
-alias cdh="cd ~"
-# Development
-## Python
-alias pyenv39="python3.9 -m venv .venv"
-alias py39="python3.9"
-alias pyenv="python3 -m venv .venv"
-alias activate="source .venv/bin/activate"
-alias rm_pycache="find . | grep -E '(/__pycache__$|\.pyc$|\.pyo$)' | xargs rm -rf"
-# Git & code formating
-alias run_flake8="python3 -m flake8 --exclude .git,cicd/,__pycache__,.hg,.mypy_cache,.tox,.venv,venv,_build,buck-out,build,dist --max-line-length 120"
-alias pregit="gaa & pre-commit run"
-alias gmj="gitmoji -c"
-# Default Environment Variables
-alias awsenvs="printenv | grep AWS"
-alias sparkenvs="printenv | grep SPARK"
-# Docker
-alias d='docker'
-# kubernets
-alias k='kubectl'
-alias kgp="kubectl get pods"
-alias kconf_rancher="kubectl config use-context rancher-desktop"
-alias kconf_uat2="kubectl config use-context arn:aws:eks:us-east-1:020162860002:cluster/EKSDT-UAT-CLUSTER-V2"
-alias kconf_prd2="kubectl config use-context arn:aws:eks:sa-east-1:812128893680:cluster/EKSDT-PRD-CLUSTER-V2"
-# Parquet cli
-alias pq='parquet'
-alias pqm='parquet meta'
-alias pqh='parquet head'
-# Tools
-alias zup='source ~/.zshrc'
-alias zconf='zed ~/.zshrc'
-alias sconf='zed ~/.config/starship.toml'
-alias toolbox='open ~/Developer/tools'
-alias cdtoolbox='cd ~/Developer/tools'
 
 source /Users/viniciuspinhob/.docker/init-zsh.sh || true # Added by Docker Desktop
 
-eval "$(starship init zsh)"
+
 eval $(thefuck --alias)
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
