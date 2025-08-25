@@ -32,3 +32,4 @@ set colorcolumn=80
 set laststatus=2
 set clipboard=unnamedplus
 set laststatus=3
+set splitright
