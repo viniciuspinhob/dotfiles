@@ -30,7 +30,7 @@ cyan = '0x8ec07c'
 white = '0xebdbb2'
 
 [window]
-opacity = 0.98
+opacity = 1
 dimensions = { columns = 0, lines = 0 }
 padding = { x = 6, y = 6 }
 decorations = "Full" 
