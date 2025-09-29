@@ -27,6 +27,8 @@ outer.right = 10
 
 # Toggle between accordion and horizontal tiles
 alt-t = ['layout accordion', 'layout tiles']
+# Quick toggle
+alt-shift-tab = 'layout accordion tiles'
 
 # Focus on windows (Alt + hjkl)
 alt-h = 'focus left'
