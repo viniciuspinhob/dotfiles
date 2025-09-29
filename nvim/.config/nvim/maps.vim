@@ -48,6 +48,9 @@ nmap <leader>do :VimspectorShowOutput
 nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
+" Ntree toogle
+nnoremap <leader>n :NvimTreeToggle<CR>
+
 " Tab management mappings
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>tx :tabclose<CR>
@@ -74,3 +77,10 @@ nmap <silent> gi <Cmd>call CocAction('jumpImplementation', 'tabe')<CR>
 nmap <silent> giv <Cmd>vsplit<CR><Cmd>call CocAction('jumpImplementation')<CR>
 nmap <silent> gy <Cmd>call CocAction('jumpTypeDefinition', 'tabe')<CR>
 nmap <silent> gyv <Cmd>vsplit<CR><Cmd>call CocAction('jumpTypeDefinition')<CR>
+
+" Search and replace with confirmation
+nnoremap <leader>sr :%s//gc<Left><Left><Left>
+vnoremap <leader>sr :s//gc<Left><Left><Left>
+
+"undo tree
+nnoremap <leader>ut :UndotreeToggle<CR>

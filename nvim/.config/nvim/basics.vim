@@ -33,3 +33,5 @@ set laststatus=2
 set clipboard=unnamedplus
 set laststatus=3
 set splitright
+set spell
+set spelllang=en_us,pt_br

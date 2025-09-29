@@ -16,9 +16,6 @@ Plug 'morhetz/gruvbox'
 " Autocompletion and IDE features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Autocompletion and IDE features
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Interactive code execution
 Plug 'jpalardy/vim-slime'
 
@@ -60,8 +57,13 @@ Plug 'numToStr/Comment.nvim'
 " Markdown Rendering
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
-call plug#end() " This line *must* be here to load the plugins and set runtime paths.
+" Git viewer on file
+Plug 'lewis6991/gitsigns.nvim'
 
+"undotree 
+Plug 'mbbill/undotree'
+
+call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
 " so the plugins they configure are already available.
@@ -133,3 +135,8 @@ EOF
 " debugging
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = ['debugpy']
+
+" Git viwer
+lua << EOF
+require('gitsigns').setup()
+EOF
