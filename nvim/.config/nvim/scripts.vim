@@ -5,4 +5,8 @@ augroup auto_save_current
 augroup END
 
 " Find file on new tab
-autocmd TabNewEntered * lua require('telescope.builtin').find_files()
+" Find file on new tab, clearing input buffer
+autocmd TabNewEntered * lua vim.defer_fn(function() 
+    \ vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'nx', false)
+    \ require('telescope.builtin').find_files() 
+    \ end, 10)
