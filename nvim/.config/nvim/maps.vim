@@ -38,6 +38,7 @@ nmap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nmap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nmap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nmap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nmap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 
 " debugging mappings
 nmap <leader>dl :call vimspector#Launch()<cr>
