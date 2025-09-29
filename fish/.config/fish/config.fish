@@ -7,6 +7,12 @@ set --export --prepend PATH "/Users/fo126029/.rd/bin"
 
 thefuck --alias | source
 
+# Always on TMUX mode
+# if test -z "$TMUX"
+#     set session_name "$USER-"(date +%s%N)
+#     exec tmux new-session -s $session_name
+# end
+
 # configure the prompt
 function fish_prompt
     # Gruvbox colors
@@ -27,7 +33,7 @@ function fish_prompt
     end
 
     # Kubernetes context - only if pwd contains "k8s"
-    if string match -q "*k8s*" (pwd)
+    if string match -q "*k8s*" (pwd); and test -n "$AWS_VAULT"
         set k8s_context_full (kubectl config current-context 2>/dev/null)
         if test -n "$k8s_context_full"
             # only part after the last slash

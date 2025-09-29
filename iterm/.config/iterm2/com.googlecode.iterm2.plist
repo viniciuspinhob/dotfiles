@@ -6,8 +6,6 @@
 	<true/>
 	<key>BadgeFont</key>
 	<string>Helvetica</string>
-	<key>Command</key>
-	<string>/bin/zsh</string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Atom</key>
@@ -3371,7 +3369,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string>/bin/zsh</string>
+			<string></string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3412,7 +3410,7 @@
 				<real>1</real>
 			</dict>
 			<key>Custom Command</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
