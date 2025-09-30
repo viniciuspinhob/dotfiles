@@ -7,11 +7,25 @@ set --export --prepend PATH "/Users/fo126029/.rd/bin"
 
 thefuck --alias | source
 
-# Always on TMUX mode
-# if test -z "$TMUX"
-#     set session_name "$USER-"(date +%s%N)
-#     exec tmux new-session -s $session_name
-# end
+# -----------------------------------------------------------------
+# Iniciar TMUX: Conectar à sessão existente ou criar uma nova.
+# -----------------------------------------------------------------
+# Executar apenas se não estivermos em uma sessão TMUX e se for um terminal interativo.
+if not set -q TMUX; and isatty
+    # Tenta listar as sessões existentes. Se não houver nenhuma, o comando falhará.
+    # O '-F '#S'' formata a saída para mostrar apenas o nome da sessão.
+    set -l existing_session (tmux list-sessions -F '#S' 2>/dev/null | head -n 1)
+
+    # Se a variável `existing_session` não estiver vazia, uma sessão foi encontrada.
+    if test -n "$existing_session"
+        # Anexa à primeira sessão encontrada.
+        exec tmux attach-session -t "$existing_session"
+    else
+        # Se nenhuma sessão for encontrada, cria uma nova.
+        exec tmux new-session
+    end
+end
+# -----------------------------------------------------------------
 
 # configure the prompt
 function fish_prompt
