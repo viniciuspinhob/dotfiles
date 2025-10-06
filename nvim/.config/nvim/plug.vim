@@ -63,6 +63,9 @@ Plug 'lewis6991/gitsigns.nvim'
 "undotree 
 Plug 'mbbill/undotree'
 
+"Autocomplete
+Plug 'windwp/nvim-autopairs'
+
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
@@ -140,3 +143,6 @@ let g:vimspector_install_gadgets = ['debugpy']
 lua << EOF
 require('gitsigns').setup()
 EOF
+
+"Autocomplete
+
