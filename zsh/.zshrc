@@ -4,19 +4,17 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-	git
- 	zsh-syntax-highlighting
-  	zsh-autosuggestions
-	thefuck
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    fast-syntax-highlighting
+    zsh-autocomplete
+    kubectl
 	)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-
-source /Users/viniciuspinhob/.docker/init-zsh.sh || true # Added by Docker Desktop
-
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/viniciuspinhob/.rd/bin:$PATH"
@@ -25,4 +23,3 @@ export PATH="/Users/viniciuspinhob/.rd/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 source ~/Developer/dotfiles/zsh/aliases.zsh
-
