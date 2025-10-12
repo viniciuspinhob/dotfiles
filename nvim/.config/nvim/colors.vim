@@ -9,12 +9,24 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_invert_selection='0'
 
-"lightline colorscheme (assuming lightline.vim is installed via plug.vim)
+"lightline colorscheme
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'fullpath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fullpath': 'LightlineFullpath'
+      \ },
       \ 'tabline': {
       \   'left': [ ['tabs'] ],
       \   'right': [ ['close'] ]
       \ },
       \ }
+
+function! LightlineFullpath()
+  return expand('%')
+endfunction
+
 set showtabline=2
