@@ -3,6 +3,7 @@ require('render-markdown').setup({
         -- Turn on / off inline link icon rendering.
         enabled = true,
         -- Additional modes to render links.
+        -- render_modes = { 'n', 'c' }, -- Render in normal/command, not in insert/visual
         render_modes = false,
         -- How to handle footnote links, start with a '^'.
         footnote = {
@@ -116,8 +117,8 @@ require('render-markdown').setup({
             local index = tonumber(value:sub(1, #value - 1))
             return ('%d.'):format(index > 1 and index or ctx.index)
         end,
-        left_pad = 0,
-        right_pad = 0,
+        left_pad = 1,
+        right_pad = 1,
         highlight = 'RenderMarkdownBullet',
         scope_highlight = {},
     },
