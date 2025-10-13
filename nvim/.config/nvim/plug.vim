@@ -8,13 +8,23 @@ call plug#begin('~/.config/nvim/plugged')
 " Colorscheme
 Plug 'morhetz/gruvbox'
 
-" LSP Client -> not set
-" Plug 'autozimu/LanguageClient-neovim', {
-"  \ 'branch': 'next',
-"  \ 'do': 'bash install.sh',
-"  \ }
-" Autocompletion and IDE features
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" LSP Configuration
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+
+" Snippet engine (required for nvim-cmp)
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Interactive code execution
 Plug 'jpalardy/vim-slime'
@@ -63,16 +73,22 @@ Plug 'lewis6991/gitsigns.nvim'
 "undotree 
 Plug 'mbbill/undotree'
 
-"Autocomplete
-Plug 'windwp/nvim-autopairs'
-
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
 " so the plugins they configure are already available.
 
 " Python LSP
-let g:coc_global_extensions = ['coc-pyright']
+" let g:coc_global_extensions = ['coc-pyright']
+" Load LSP configuration
+lua << EOF
+require('plugins.lsp-config')
+require('plugins.completion-setup')
+EOF
+" lua << EOF
+" require('lsp-setup')
+" require('completion-setup')
+" EOF
 
 " telescope fzy native
 lua << EOF
@@ -143,6 +159,3 @@ let g:vimspector_install_gadgets = ['debugpy']
 lua << EOF
 require('gitsigns').setup()
 EOF
-
-"Autocomplete
-

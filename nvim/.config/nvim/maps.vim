@@ -20,16 +20,16 @@ nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " Find files using Lua functions
 nmap <leader>fs <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For >")})<cr>
@@ -69,19 +69,19 @@ nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
 
-" Code navigation
-nmap <silent> gd <Cmd>call CocAction('jumpDefinition', 'tabe')<CR>
-nmap <silent> gv <Cmd>vsplit<CR><Cmd>call CocAction('jumpDefinition')<CR>
-nmap <silent> gs <Cmd>botright split<CR><Cmd>call CocAction('jumpDefinition')<CR>
-nmap <silent> gr <Cmd>call CocAction('jumpReferences', 'tabe')<CR>
-nmap <silent> gi <Cmd>call CocAction('jumpImplementation', 'tabe')<CR>
-nmap <silent> giv <Cmd>vsplit<CR><Cmd>call CocAction('jumpImplementation')<CR>
-nmap <silent> gy <Cmd>call CocAction('jumpTypeDefinition', 'tabe')<CR>
-nmap <silent> gyv <Cmd>vsplit<CR><Cmd>call CocAction('jumpTypeDefinition')<CR>
+" Code navigation using Coc
+" nmap <silent> gd <Cmd>call CocAction('jumpDefinition', 'tabe')<CR>
+" nmap <silent> gv <Cmd>vsplit<CR><Cmd>call CocAction('jumpDefinition')<CR>
+" nmap <silent> gs <Cmd>botright split<CR><Cmd>call CocAction('jumpDefinition')<CR>
+" nmap <silent> gr <Cmd>call CocAction('jumpReferences', 'tabe')<CR>
+" nmap <silent> gi <Cmd>call CocAction('jumpImplementation', 'tabe')<CR>
+" nmap <silent> giv <Cmd>vsplit<CR><Cmd>call CocAction('jumpImplementation')<CR>
+" nmap <silent> gy <Cmd>call CocAction('jumpTypeDefinition', 'tabe')<CR>
+" nmap <silent> gyv <Cmd>vsplit<CR><Cmd>call CocAction('jumpTypeDefinition')<CR>
 
 " Search and replace with confirmation
 nnoremap <leader>sr :%s//gc<Left><Left><Left>
 vnoremap <leader>sr :s//gc<Left><Left><Left>
 
 "undo tree
-nnoremap <leader>ut :UndotreeToggle<CR>
+nnoremap <leader>tu :UndotreeToggle<CR>
