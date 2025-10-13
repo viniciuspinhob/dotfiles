@@ -53,7 +53,8 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 nnoremap <leader>n :NvimTreeToggle<CR>
 
 " Tab management mappings
-nnoremap <leader>t :tabnew<CR>
+" nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>t :tabnew<CR>:lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>tx :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>tm :tabmove<CR>
