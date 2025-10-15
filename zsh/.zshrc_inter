@@ -12,7 +12,7 @@ plugins=(
     fast-syntax-highlighting
     zsh-autocomplete
     kubectl
-)
+	)
 
 source $ZSH/oh-my-zsh.sh
 

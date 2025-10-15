@@ -1,7 +1,6 @@
 ### Aliases ###
 
 # General
-alias shn="sudo hostname -s 127.0.0.1"
 alias cdd="cd  ~/Developer"
 alias cdh="cd $HOME"
 alias fzp="fzf --preview 'cat {}'"

@@ -1,8 +1,10 @@
-# Path to your oh-my-zsh installation.
+# Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Set name of the theme to load.
 ZSH_THEME="robbyrussell"
 
+# Which plugins would you like to load?
 plugins=(
     git
     zsh-autosuggestions
@@ -14,12 +16,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/viniciuspinhob/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-export PATH="/opt/homebrew/bin:$PATH"
-
+### My Custom Dotfiles ###
+source ~/Developer/dotfiles/zsh/managed.zsh
 source ~/Developer/dotfiles/zsh/aliases.zsh
+source ~/Developer/dotfiles/zsh/functions.zsh
+source ~/Developer/dotfiles/zsh/inter.zsh
