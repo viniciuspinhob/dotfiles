@@ -1,0 +1,20 @@
+# Gruvbox dark theme
+--theme="gruvbox-dark"
+
+# Show line numbers and git changes
+--style="numbers,changes,header,grid"
+
+# Don't use pager for short files
+--paging=never
+
+# Set tab width
+--tabs=2
+
+# Wrap lines
+--wrap=auto
+
+# Show non-printable characters
+--show-all
+
+# Use italic text (if terminal supports it)
+--italic-text=always
