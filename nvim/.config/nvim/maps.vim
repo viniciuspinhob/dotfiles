@@ -70,16 +70,6 @@ nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
 
-" Code navigation using Coc
-" nmap <silent> gd <Cmd>call CocAction('jumpDefinition', 'tabe')<CR>
-" nmap <silent> gv <Cmd>vsplit<CR><Cmd>call CocAction('jumpDefinition')<CR>
-" nmap <silent> gs <Cmd>botright split<CR><Cmd>call CocAction('jumpDefinition')<CR>
-" nmap <silent> gr <Cmd>call CocAction('jumpReferences', 'tabe')<CR>
-" nmap <silent> gi <Cmd>call CocAction('jumpImplementation', 'tabe')<CR>
-" nmap <silent> giv <Cmd>vsplit<CR><Cmd>call CocAction('jumpImplementation')<CR>
-" nmap <silent> gy <Cmd>call CocAction('jumpTypeDefinition', 'tabe')<CR>
-" nmap <silent> gyv <Cmd>vsplit<CR><Cmd>call CocAction('jumpTypeDefinition')<CR>
-
 " Search and replace with confirmation
 nnoremap <leader>sr :%s//gc<Left><Left><Left>
 vnoremap <leader>sr :s//gc<Left><Left><Left>
