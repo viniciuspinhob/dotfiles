@@ -4,4 +4,4 @@
 
 # Set accent color to green
 defaults write -g AppleAccentColor -int 3
-killall cfprefsd   
+killall cfprefsd 
