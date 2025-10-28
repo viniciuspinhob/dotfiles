@@ -15,12 +15,12 @@ after-startup-command = []
 
 # Gaps configuration
 [gaps]
-inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
+inner.horizontal  = 25
+inner.vertical  = 25
+outer.left  = 25
+outer.bottom  = 25
+outer.top  = 25
+outer.right  = 25
 
 # Key bindings
 [mode.main.binding]
