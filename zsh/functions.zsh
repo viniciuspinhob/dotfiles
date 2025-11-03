@@ -34,6 +34,9 @@ vspark() {
     if [[ -n "${spark_versions[$1]}" ]]; then
         export SPARK_HOME="${spark_versions[$1]}"
         echo "Spark version set to: $1 ($SPARK_HOME)"
+        export SPARK_LOCAL_IP="127.0.0.1"
+        export SPARK_DRIVER_HOST="127.0.0.1"
+        export PYSPARK_SUBMIT_ARGS="--driver-host 127.0.0.1 pyspark-shell"
     else
         echo "Usage: vspark <version>"
         echo "Available Spark versions:"
