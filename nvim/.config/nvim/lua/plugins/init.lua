@@ -12,3 +12,4 @@ vim.g.vimwiki_global_ext = 0
 require("plugins.lsp-config")
 require("plugins.completion-setup")
 require("plugins.render-markdown")
+require("plugins.gitsigns")
