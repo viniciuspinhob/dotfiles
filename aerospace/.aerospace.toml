@@ -15,12 +15,12 @@ after-startup-command = []
 
 # Gaps configuration
 [gaps]
-inner.horizontal  = 25
-inner.vertical  = 25
-outer.left  = 25
-outer.bottom  = 25
-outer.top  = 25
-outer.right  = 25
+inner.horizontal  = 30
+inner.vertical  = 30
+outer.left  = 30
+outer.bottom  = 30
+outer.top  = 30
+outer.right  = 30
 
 # Key bindings
 [mode.main.binding]
@@ -83,5 +83,5 @@ esc = 'mode main'
 # Força janelas de aplicativos específicos a sempre abrirem no modo flutuante.
 
 [[on-window-detected]]
-if.app-name-regex-substring = '(?i)System Settings|bitwarden|Calculator|Archive Utility|Finder'
+if.app-name-regex-substring = '(?i)System Settings|bitwarden|Calculator|Archive Utility'
 run = 'layout floating'
