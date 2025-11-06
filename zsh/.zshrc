@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load?
 plugins=(
@@ -20,4 +20,5 @@ source $ZSH/oh-my-zsh.sh
 source ~/Developer/dotfiles/zsh/managed.zsh
 source ~/Developer/dotfiles/zsh/aliases.zsh
 source ~/Developer/dotfiles/zsh/functions.zsh
+source ~/Developer/dotfiles/zsh/theme.zsh
 source ~/Developer/dotfiles/zsh/inter.zsh
