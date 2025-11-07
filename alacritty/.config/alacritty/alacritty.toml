@@ -1,6 +1,6 @@
 [terminal]
-# shell = { program = "/opt/homebrew/bin/fish" }
-shell = {program = "/bin/zsh" }
+shell = { program = "/opt/homebrew/bin/fish" }
+# shell = {program = "/bin/zsh" }
 [env]
 TERM = "xterm-256color"
 
