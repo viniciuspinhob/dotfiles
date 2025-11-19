@@ -20,6 +20,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/Developer/dotfiles/zsh/managed.zsh
 source ~/Developer/dotfiles/zsh/aliases.zsh
 source ~/Developer/dotfiles/zsh/functions.zsh
-source ~/Developer/dotfiles/zsh/tmux.zsh
+# source ~/Developer/dotfiles/zsh/tmux.zsh
 source ~/Developer/dotfiles/zsh/theme.zsh
 source ~/Developer/dotfiles/zsh/inter.zsh

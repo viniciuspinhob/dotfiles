@@ -82,6 +82,6 @@ esc = 'mode main'
 # --- Regras para Aplicativos Flutuantes (Whitelist) ---
 # Força janelas de aplicativos específicos a sempre abrirem no modo flutuante.
 
-[[on-window-detected]]
-if.app-name-regex-substring = '(?i)System Settings|bitwarden|Calculator|Archive Utility'
-run = 'layout floating'
+# [[on-window-detected]]
+# if.app-name-regex-substring = '(?i)System Settings|Calculator|Archive Utility'
+# run = 'layout floating'
