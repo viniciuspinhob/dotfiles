@@ -19,6 +19,23 @@ inoremap <C-k> <esc>:m .-2<CR>==i
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 
+" Split management
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>s :split<CR>
+nnoremap <leader>q :q<CR>
+
+" Pane navigation (like tmux)
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Pane resizing
+nnoremap <leader>+ :resize +10<CR>
+nnoremap <leader>- :resize -10<CR>
+nnoremap <leader>< :vertical resize -10<CR>
+nnoremap <leader>> :vertical resize +10<CR>
+
 " Use tab for trigger completion with characters ahead and navigate.
 " inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
@@ -75,4 +92,4 @@ nnoremap <leader>sr :%s//gc<Left><Left><Left>
 vnoremap <leader>sr :s//gc<Left><Left><Left>
 
 "undo tree
-nnoremap <leader>tu :UndotreeToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
