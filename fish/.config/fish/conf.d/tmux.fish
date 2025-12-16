@@ -2,6 +2,12 @@
 # Automatically attach to existing session or create GERAL session with 3 windows
 # Only run if not already in TMUX and terminal is interactive
 if not set -q TMUX; and isatty
+    # Check if tmux is installed and available
+    if not command -v tmux >/dev/null 2>&1
+        echo "tmux not found. Skipping auto-start."
+        return
+    end
+    
     # Try to get existing sessions
     set -l existing_sessions (tmux list-sessions -F '#S' 2>/dev/null)
     
@@ -21,14 +27,17 @@ if not set -q TMUX; and isatty
         end
         
         # Create GERAL session with 3 windows
-        tmux new-session -d -s GERAL -c $dotfiles_path -n dotfiles
-        tmux new-window -t GERAL -c $obsidian_path -n notes  
-        tmux new-window -t GERAL -c $downloads_path -n downloads
-        
-        # Go back to first window
-        tmux select-window -t GERAL:1
-        
-        # Attach to the session
-        exec tmux attach-session -t GERAL
+        if tmux new-session -d -s GERAL -c $dotfiles_path -n dotfiles 2>/dev/null
+            tmux new-window -t GERAL -c $obsidian_path -n notes 2>/dev/null
+            tmux new-window -t GERAL -c $downloads_path -n downloads 2>/dev/null
+            
+            # Go back to first window
+            tmux select-window -t GERAL:1 2>/dev/null
+            
+            # Attach to the session
+            exec tmux attach-session -t GERAL
+        else
+            echo "Failed to create tmux session. Continuing without tmux."
+        end
     end
 end
