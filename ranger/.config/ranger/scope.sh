@@ -47,6 +47,80 @@ PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-autumn}
 OPENSCAD_IMGSIZE=${RNGR_OPENSCAD_IMGSIZE:-1000,1000}
 OPENSCAD_COLORSCHEME=${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}
 
+## Helper function to preview parquet files with scrollable content
+preview_parquet() {
+    ## Show all sections without truncation - ranger will handle scrolling
+    ## Use Alt+j and Alt+k to scroll in the preview pane
+    
+    ## Helper to format output with proper line breaks
+    format_output() {
+        local content="$1"
+        if [[ -z "$content" ]]; then
+            return
+        fi
+        ## Use fold to break long lines at word boundaries
+        ## -w: width, -s: break at spaces when possible
+        echo "$content" | fold -w "${PV_WIDTH}" -s
+    }
+    
+    ## Show schema (always show)
+    if command -v parquet-tools >/dev/null 2>&1; then
+        echo "=== Schema ==="
+        local schema_output
+        schema_output=$(parquet-tools schema "${FILE_PATH}" 2>/dev/null)
+        format_output "$schema_output"
+        echo ""
+    elif command -v parquet >/dev/null 2>&1; then
+        echo "=== Metadata ==="
+        local meta_output
+        meta_output=$(parquet meta "${FILE_PATH}" 2>/dev/null)
+        format_output "$meta_output"
+        echo ""
+    fi
+    
+    ## Show row count
+    if command -v parquet-tools >/dev/null 2>&1; then
+        local row_count
+        row_count=$(parquet-tools row-count "${FILE_PATH}" 2>/dev/null)
+        if [[ -n "$row_count" ]]; then
+            echo "=== Row Count ==="
+            format_output "$row_count"
+            echo ""
+        fi
+    fi
+    
+    ## Show metadata (only if parquet-tools is available)
+    if command -v parquet-tools >/dev/null 2>&1; then
+        echo "=== Metadata ==="
+        local meta_output
+        meta_output=$(parquet-tools meta "${FILE_PATH}" 2>/dev/null)
+        ## Try to format as JSON if it looks like JSON, otherwise use fold
+        if command -v jq >/dev/null 2>&1 && echo "$meta_output" | jq . >/dev/null 2>&1; then
+            echo "$meta_output" | jq . | fold -w "${PV_WIDTH}" -s
+        elif command -v python3 >/dev/null 2>&1 && echo "$meta_output" | python3 -m json.tool >/dev/null 2>&1; then
+            echo "$meta_output" | python3 -m json.tool | fold -w "${PV_WIDTH}" -s
+        else
+            ## If not JSON, just fold long lines
+            echo "$meta_output" | fold -w "${PV_WIDTH}" -s
+        fi
+        echo ""
+    fi
+    
+    ## Show sample data (show all, let ranger handle scrolling)
+    if command -v parquet-tools >/dev/null 2>&1; then
+        echo "=== Sample Data ==="
+        ## Use CSV format for better readability with line breaks
+        parquet-tools cat --format=csv --limit=100 "${FILE_PATH}" 2>/dev/null | \
+            while IFS= read -r line; do
+                if [[ ${#line} -gt ${PV_WIDTH} ]]; then
+                    echo "$line" | fold -w "${PV_WIDTH}" -s
+                else
+                    echo "$line"
+                fi
+            done
+    fi
+}
+
 handle_extension() {
     case "${FILE_EXTENSION_LOWER}" in
         ## Archive
@@ -108,6 +182,15 @@ handle_extension() {
             jq --color-output . "${FILE_PATH}" && exit 5
             python -m json.tool -- "${FILE_PATH}" && exit 5
             ;;
+
+        ## Parquet
+        parquet)
+            ## Show schema, metadata, and sample data using parquet-tools
+            ## Full content is shown - use Alt+j/Alt+k to scroll in preview pane
+            if command -v parquet-tools >/dev/null 2>&1 || command -v parquet >/dev/null 2>&1; then
+                preview_parquet && exit 0
+            fi
+            exit 1;;
 
         ## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
         ## by file(1).
@@ -287,6 +370,15 @@ handle_mime() {
             ## xls2csv comes with catdoc:
             ##   http://www.wagner.pp.ru/~vitus/software/catdoc/
             xls2csv -- "${FILE_PATH}" && exit 5
+            exit 1;;
+
+        ## Parquet
+        application/x-parquet|application/parquet|*parquet*)
+            ## Show schema, metadata, and sample data using parquet-tools
+            ## Full content is shown - use Alt+j/Alt+k to scroll in preview pane
+            if command -v parquet-tools >/dev/null 2>&1 || command -v parquet >/dev/null 2>&1; then
+                preview_parquet && exit 0
+            fi
             exit 1;;
 
         ## Text
