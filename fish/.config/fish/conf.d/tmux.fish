@@ -8,15 +8,12 @@ if not set -q TMUX; and isatty
         return
     end
     
-    # Try to get existing sessions
-    set -l existing_sessions (tmux list-sessions -F '#S' 2>/dev/null)
-    
-    # If sessions exist, attach to first one
-    if test -n "$existing_sessions"
-        set -l first_session (echo $existing_sessions | head -n 1)
-        exec tmux attach-session -t "$first_session"
+    # Check if GERAL session exists
+    if tmux has-session -t GERAL 2>/dev/null
+        # Session exists - attach to it
+        tmux attach-session -d -t GERAL
     else
-        # No sessions exist - create GERAL session with 3 windows
+        # Session doesn't exist - create new GERAL session with 3 windows
         # Verify paths exist
         set -l dotfiles_path ~/Developer/dotfiles
         set -l obsidian_path ~/Documents/obsidian
@@ -26,18 +23,17 @@ if not set -q TMUX; and isatty
             set obsidian_path ~/Documents
         end
         
-        # Create GERAL session with 3 windows
-        if tmux new-session -d -s GERAL -c $dotfiles_path -n dotfiles 2>/dev/null
-            tmux new-window -t GERAL -c $obsidian_path -n notes 2>/dev/null
-            tmux new-window -t GERAL -c $downloads_path -n downloads 2>/dev/null
-            
-            # Go back to first window
-            tmux select-window -t GERAL:1 2>/dev/null
-            
-            # Attach to the session
-            exec tmux attach-session -t GERAL
-        else
-            echo "Failed to create tmux session. Continuing without tmux."
-        end
+        # Create GERAL session with first window
+        tmux new-session -d -s GERAL -c $dotfiles_path -n dotfiles 2>/dev/null
+        
+        # Create additional windows
+        tmux new-window -t GERAL -c $obsidian_path -n notes 2>/dev/null
+        tmux new-window -t GERAL -c $downloads_path -n downloads 2>/dev/null
+        
+        # Go back to first window
+        tmux select-window -t GERAL:1 2>/dev/null
+        
+        # Attach to the newly created session
+        tmux attach-session -t GERAL
     end
 end
