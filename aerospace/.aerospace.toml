@@ -13,14 +13,14 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 after-login-command = []
 after-startup-command = []
 
-# Gaps configuration
+# Per-monitor gaps configuration
 [gaps]
-inner.horizontal  = 20
-inner.vertical  = 20
-outer.left  = 20
-outer.bottom  = 20
-outer.top  = 20
-outer.right  = 20
+inner.horizontal = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+inner.vertical = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+outer.top = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+outer.bottom = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+outer.left = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+outer.right = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
 
 # Key bindings
 [mode.main.binding]
@@ -48,6 +48,10 @@ alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
 
 # Move window to workspace (Alt + Shift + number)
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -55,6 +59,10 @@ alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
 
 # Layout controls
 alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling
@@ -78,10 +86,3 @@ k = 'resize height -50'
 l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
-
-# --- Regras para Aplicativos Flutuantes (Whitelist) ---
-# Força janelas de aplicativos específicos a sempre abrirem no modo flutuante.
-
-# [[on-window-detected]]
-# if.app-name-regex-substring = '(?i)System Settings|Calculator|Archive Utility'
-# run = 'layout floating'
