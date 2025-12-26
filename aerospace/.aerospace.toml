@@ -13,6 +13,20 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 after-login-command = []
 after-startup-command = []
 
+# Assign workspaces to monitors
+# Workspaces 1-5 no display principal (índice 1)
+# Workspaces 6-9 no segundo display (índice 2)
+[workspace-to-monitor-force-assignment]
+"1" = 1
+"2" = 1º
+"3" = 1
+"4" = 1
+"5" = 1
+"6" = 2
+"7" = 2
+"8" = 2
+"9" = 2
+
 # Per-monitor gaps configuration
 [gaps]
 inner.horizontal = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
@@ -67,6 +81,7 @@ alt-shift-9 = 'move-node-to-workspace 9'
 # Layout controls
 alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling
 alt-f = 'fullscreen'                        # Toggle fullscreen
+alt-z = 'fullscreen' # match tmux bindinds
 
 # Resize mode
 alt-r = 'mode resize'
