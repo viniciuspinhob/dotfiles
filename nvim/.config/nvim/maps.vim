@@ -57,14 +57,19 @@ nmap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nmap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nmap <leader>/ <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 
-" debugging mappings
-nmap <leader>dl :call vimspector#Launch()<cr>
-nmap <leader>dr :VimspectorReset<cr>
-nmap <leader>de :VimspectorEval
-nmap <leader>dw :VimspectorWatch
-nmap <leader>do :VimspectorShowOutput
-nmap <leader>di <Plug>VimspectorBalloonEval
-xmap <leader>di <Plug>VimspectorBalloonEval
+" debugging mappings (nvim-dap)
+nmap <leader>dl <cmd>lua require('dap').continue()<cr>
+nmap <leader>dr <cmd>lua require('dap').restart()<cr>
+nmap <leader>ds <cmd>lua require('dap').stop()<cr>
+nmap <leader>db <cmd>lua require('dap').toggle_breakpoint()<cr>
+nmap <leader>dB <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
+nmap <leader>dp <cmd>lua require('dap').pause()<cr>
+nmap <leader>do <cmd>lua require('dap').step_over()<cr>
+nmap <leader>di <cmd>lua require('dap').step_into()<cr>
+nmap <leader>du <cmd>lua require('dap').step_out()<cr>
+nmap <leader>de <cmd>lua require('dapui').eval()<cr>
+nmap <leader>dw <cmd>lua require('dapui').float_element('watches')<cr>
+nmap <leader>dt <cmd>lua require('dapui').toggle()<cr>
 
 " Ntree toogle
 nnoremap <leader>n :NvimTreeToggle<CR>

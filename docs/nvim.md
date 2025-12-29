@@ -225,19 +225,31 @@ Usage: Press <Space>fb.
 
 Usage: Press <Space>fh, then type the help topic and Enter.
 
-Debugging (Vimspector)
+Debugging (nvim-dap)
 
-<leader>dl: Launches a debugging session (:call vimspector#Launch()).
+<leader>dl: Starts/continues debugging session.
 
-<leader>dr: Resets Vimspector (:VimspectorReset).
+<leader>dr: Restarts the debugging session.
 
-<leader>de: Evaluates an expression (:VimspectorEval).
+<leader>ds: Stops the debugging session.
 
-<leader>dw: Adds an expression to watch (:VimspectorWatch).
+<leader>db: Toggles a breakpoint at the current line.
 
-<leader>do: Shows debugger output (:VimspectorShowOutput).
+<leader>dB: Sets a conditional breakpoint (asks for condition).
 
-<leader>di (Normal and Visual Mode): Displays the value of the variable under the cursor in a "balloon" (<Plug>VimspectorBalloonEval).
+<leader>dp: Pauses the debugging session.
+
+<leader>do: Steps over (next line).
+
+<leader>di: Steps into (enters function).
+
+<leader>du: Steps out (exits function).
+
+<leader>de: Evaluates expression under cursor.
+
+<leader>dw: Opens watches window.
+
+<leader>dt: Toggles DAP UI.
 
 3. Important Configurations and Plugins
 basics.vim

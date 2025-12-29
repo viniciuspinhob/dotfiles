@@ -13,3 +13,4 @@ require("plugins.lsp-config")
 require("plugins.completion-setup")
 require("plugins.render-markdown")
 require("plugins.gitsigns")
+-- DAP is loaded in plug.vim after plugins are installed

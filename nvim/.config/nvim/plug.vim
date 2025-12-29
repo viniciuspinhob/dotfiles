@@ -58,8 +58,12 @@ Plug 'akinsho/bufferline.nvim'
 " For nice icons
 Plug 'nvim-tree/nvim-web-devicons' 
 
-" Debugging tools
-Plug 'puremourning/vimspector'
+" Debugging tools (nvim-dap - não requer Python3+ compilado no Neovim)
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'mfussenegger/nvim-dap-python'
 
 " Toggle comments
 Plug 'numToStr/Comment.nvim'
@@ -151,9 +155,10 @@ lua << EOF
 require('Comment').setup()
 EOF
 
-" debugging
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_install_gadgets = ['debugpy']
+" nvim-dap configuration (loaded after plugins)
+lua << EOF
+require('plugins.dap-config')
+EOF
 
 " Git viwer
 lua << EOF
