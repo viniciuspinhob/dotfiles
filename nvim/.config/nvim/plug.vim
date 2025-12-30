@@ -24,6 +24,10 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" Auto pairs (parentheses, quotes, brackets)
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Interactive code execution
@@ -87,6 +91,7 @@ call plug#end() " This line *must* be here to load the plugins and set runtime p
 " Load LSP configuration
 lua << EOF
 require('plugins.lsp-config')
+require('plugins.autopairs-config')
 require('plugins.completion-setup')
 EOF
 " lua << EOF
