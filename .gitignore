@@ -1,2 +1,4 @@
 nvim/.config/nvim/plugged
 **/*/*.DS_Store
+*.pyc
+**__pychache/*

@@ -15,6 +15,7 @@ alias rmpc="find . | grep -E '(/__pycache__\$|\.pyc\$|\.pyo\$)' | xargs rm -rf"
 alias run_flake8="python3 -m flake8 --exclude .git,cicd/,__pycache__,.hg,.mypy_cache,.tox,.venv,venv,_build,buck-out,build,dist --max-line-length 120"
 alias pregit="gaa && pre-commit run"
 alias gmj="gitmoji -c"
+alias gss="git status --short" 
 
 ## Kubernetes
 alias k='kubectl'
