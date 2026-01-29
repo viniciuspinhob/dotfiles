@@ -16,4 +16,6 @@ alias gmj="gitmoji -c"
 ## Kubernetes
 alias k='kubectl'
 alias kgp="kubectl get pods"
-alias klt="k logs --tail=-1"
+alias klt="kubectl logs --tail=-1"
+alias klf="kubectl logs -f"
+alias kpf="kubectl port-foward"
