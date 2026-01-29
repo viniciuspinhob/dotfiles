@@ -33,7 +33,7 @@ white = '0xebdbb2'
 opacity = 1
 dimensions = { columns = 0, lines = 0 }
 padding = { x = 6, y = 6 }
-decorations = "Full" # "Full" | "None" | "Transparent" | "Buttonless"
+decorations = "None" # "Full" | "None" | "Transparent" | "Buttonless"
 decorations_theme_variant = "Dark"
 
 [font]

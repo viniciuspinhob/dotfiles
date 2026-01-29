@@ -29,12 +29,12 @@ after-startup-command = []
 
 # Per-monitor gaps configuration
 [gaps]
-inner.horizontal = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
-inner.vertical = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
-outer.top = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
-outer.bottom = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
-outer.left = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
-outer.right = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 10]
+inner.horizontal = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
+inner.vertical = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
+outer.top = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
+outer.bottom = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
+outer.left = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
+outer.right = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 0]
 
 # Key bindings
 [mode.main.binding]
@@ -86,6 +86,9 @@ alt-z = 'fullscreen' # match tmux bindinds
 # Resize mode
 alt-r = 'mode resize'
 
+# Monitor mode
+alt-m = 'mode monitor'
+
 # Additional useful bindings
 alt-enter = 'exec-and-forget open -n /Applications/Terminal.app'
 alt-shift-q = 'close'
@@ -99,5 +102,19 @@ h = 'resize width -50'
 j = 'resize height +50'
 k = 'resize height -50'
 l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+# Monitor mode bindings
+[mode.monitor.binding]
+# Mover workspace atual para monitor à esquerda
+h = 'move-workspace-to-monitor left'
+# Mover workspace atual para monitor à direita
+l = 'move-workspace-to-monitor right'
+# Mover workspace atual para monitor acima
+k = 'move-workspace-to-monitor up'
+# Mover workspace atual para monitor abaixo
+j = 'move-workspace-to-monitor down'
+# Sair do modo monitor
 enter = 'mode main'
 esc = 'mode main'

@@ -21,3 +21,5 @@ alias gss="git status --short"
 alias k='kubectl'
 alias kgp="kubectl get pods"
 alias klt="k logs --tail=-1"
+alias klf="k logs -f"
+alias kpf="k port-forward"
