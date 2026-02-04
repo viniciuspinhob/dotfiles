@@ -36,11 +36,13 @@ cmp.setup({
       end
     end, { 'i', 's' }),
   }),
+  -- Buffer source disabled: triggers vim.deprecated.health error on some Neovim builds.
+  -- Re-enable after upgrading Neovim (e.g. brew upgrade neovim) if the error is fixed.
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   }, {
-    { name = 'buffer' },
+    -- { name = 'buffer' },
     { name = 'path' },
   }),
   window = {
