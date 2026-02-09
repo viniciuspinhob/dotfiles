@@ -17,6 +17,9 @@ alias pregit="gaa && pre-commit run"
 alias gmj="gitmoji -c"
 alias gss="git status --short" 
 
+## Theme
+alias switch-theme="~/Developer/dotfiles/scripts/theme/switch-theme"
+
 ## Kubernetes
 alias k='kubectl'
 alias kgp="kubectl get pods"

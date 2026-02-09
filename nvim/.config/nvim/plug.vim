@@ -5,8 +5,10 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Colorscheme
+" Colorschemes (use switch-theme to change)
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " LSP Configuration
 Plug 'neovim/nvim-lspconfig'
