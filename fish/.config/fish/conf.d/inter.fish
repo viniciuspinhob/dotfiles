@@ -16,4 +16,3 @@ set -gx PIPX_PIP_ARGS "--extra-index-url https://nexus.sharedservices.local/repo
 set --export --prepend PATH "/Users/bi011312/.rd/bin"
 # opencode
 fish_add_path /Users/bi011312/.opencode/bin
-SETUVAR fish_user_paths:/Users/bi011312/\x2eopencode/bin\x1e/Users/fo126029/\x2elocal/bin\x1e/usr/local/bin\x1e/opt/homebrew/bin
