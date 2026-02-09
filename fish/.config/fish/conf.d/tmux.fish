@@ -17,21 +17,20 @@ if not set -q TMUX; and isatty
         # Verify paths exist
         set -l dotfiles_path ~/Developer/dotfiles
         set -l obsidian_path ~/Documents/obsidian
-        set -l downloads_path ~/Downloads
+        set -l home_path  ~/
         
         if not test -d $obsidian_path
             set obsidian_path ~/Documents
         end
         
-        # Create GERAL session with first window
-        tmux new-session -d -s GERAL -c $dotfiles_path -n dotfiles 2>/dev/null
-        
+        # Create GERAL session with first window (session must exist before new-window)
+        tmux new-session -d -s GERAL -c $home_path -n home
         # Create additional windows
-        tmux new-window -t GERAL -c $obsidian_path -n notes 2>/dev/null
-        tmux new-window -t GERAL -c $downloads_path -n downloads 2>/dev/null
+        tmux new-window -t GERAL -c $obsidian_path -n notes
+        tmux new-window -t GERAL -c $dotfiles_path -n dotfiles
         
-        # Go back to first window
-        tmux select-window -t GERAL:1 2>/dev/null
+        # Start on first window
+        tmux select-window -t GERAL:1
         
         # Attach to the newly created session
         tmux attach-session -t GERAL
