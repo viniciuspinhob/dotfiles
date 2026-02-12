@@ -29,12 +29,12 @@ after-startup-command = []
 
 # Per-monitor gaps configuration
 [gaps]
-inner.horizontal = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
-inner.vertical = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
-outer.top = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
-outer.bottom = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
-outer.left = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
-outer.right = [{ monitor."Built-in.*" = 0 }, { monitor."Retina.*" = 0 }, 20]
+inner.horizontal = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
+inner.vertical = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
+outer.top = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
+outer.bottom = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
+outer.left = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
+outer.right = [{ monitor."Built-in.*" =  10 }, { monitor."Retina.*" =  10 }, 10]
 
 # Key bindings
 [mode.main.binding]
