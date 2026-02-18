@@ -1,0 +1,80 @@
+#!/bin/bash
+
+DOTFILES_DIR="${DOTFILES:-$HOME/Developer/dotfiles}"
+THEMES_DIR="$DOTFILES_DIR/scripts/theme/themes"
+AVAILABLE_THEMES="gruvbox everforest dracula"
+
+usage() {
+    echo "Usage: switch-theme <theme>"
+    echo ""
+    echo "Available themes: $AVAILABLE_THEMES"
+    echo ""
+    echo "Current theme: $(cat ~/.config/theme 2>/dev/null || echo 'not set')"
+    exit 1
+}
+
+if [[ $# -ne 1 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    usage
+fi
+
+THEME="$1"
+
+if [[ ! " $AVAILABLE_THEMES " =~ " $THEME " ]]; then
+    echo "Error: Unknown theme '$THEME'"
+    echo "Available themes: $AVAILABLE_THEMES"
+    exit 1
+fi
+
+if [[ ! -d "$THEMES_DIR/$THEME" ]]; then
+    echo "Error: Theme directory not found: $THEMES_DIR/$THEME"
+    exit 1
+fi
+
+echo "Switching to theme: $THEME"
+
+mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/tmux
+
+echo "$THEME" > ~/.config/theme
+echo "  [ok] ~/.config/theme"
+
+cp "$THEMES_DIR/$THEME/alacritty.toml" ~/.config/alacritty/colors.toml
+echo "  [ok] alacritty"
+
+cp "$THEMES_DIR/$THEME/tmux.conf" ~/.config/tmux/current-theme.conf
+echo "  [ok] tmux"
+
+BAT_THEME=$(cat "$THEMES_DIR/$THEME/bat")
+BAT_CONFIG="$DOTFILES_DIR/bat/config"
+if [[ -f "$BAT_CONFIG" ]]; then
+    sed -i '' "s/^--theme=.*$/--theme=\"$BAT_THEME\"/" "$BAT_CONFIG"
+    echo "  [ok] bat"
+fi
+
+RANGER_RC="$DOTFILES_DIR/ranger/.config/ranger/rc.conf"
+if [[ -f "$RANGER_RC" ]]; then
+    case "$THEME" in
+        gruvbox)    RANGER_SCHEME="gruvbox_dark" ;;
+        everforest) RANGER_SCHEME="everforest_dark" ;;
+        dracula)    RANGER_SCHEME="dracula" ;;
+    esac
+    sed -i '' "s/^set colorscheme .*/set colorscheme $RANGER_SCHEME/" "$RANGER_RC"
+    echo "  [ok] ranger"
+fi
+
+echo "  [ok] nvim (reads ~/.config/theme on startup)"
+echo "  [ok] fish (reads ~/.config/theme on startup)"
+
+if [[ -n "$TMUX" ]]; then
+    tmux source-file ~/.tmux.conf 2>/dev/null && echo "  [reloaded] tmux"
+fi
+
+fish -c "type -q reload-theme && reload-theme" 2>/dev/null && echo "  [reloaded] fish"
+
+echo ""
+echo "Theme switched to: $THEME"
+echo ""
+echo "Note: Restart apps for full effect:"
+echo "  - nvim: :source \$MYVIMRC or restart"
+echo "  - ranger: restart"
+echo "  - alacritty: auto-reloads"
