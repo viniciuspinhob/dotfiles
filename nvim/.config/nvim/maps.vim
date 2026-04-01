@@ -96,5 +96,8 @@ nnoremap <leader>5 5gt
 nnoremap <leader>sr :%s//gc<Left><Left><Left>
 vnoremap <leader>sr :s//gc<Left><Left><Left>
 
+" Search and replace across quickfix list (use after <C-q> in Telescope)
+nnoremap <leader>sR <cmd>lua require('spectre').open()<CR>
+
 "undo tree
 nnoremap <leader>ut :UndotreeToggle<CR>

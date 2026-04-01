@@ -83,6 +83,9 @@ Plug 'lewis6991/gitsigns.nvim'
 "undotree 
 Plug 'mbbill/undotree'
 
+" Search and replace across project (like VSCode)
+Plug 'nvim-pack/nvim-spectre'
+
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
@@ -170,4 +173,9 @@ EOF
 " Git viwer
 lua << EOF
 require('gitsigns').setup()
+EOF
+
+" Spectre setup
+lua << EOF
+require('spectre').setup()
 EOF
