@@ -113,7 +113,8 @@ EOF
 lua << EOF
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {"node_modules", ".git/", ".venv/"},
+    file_ignore_patterns = {"node_modules", ".git/", ".venv/", "__pycache__/"},
+    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -127,7 +128,8 @@ require('telescope').setup{
   },
   pickers = {
     find_files = {
-      hidden = true
+      hidden = true,
+      no_ignore = true
     }
   }
 }
