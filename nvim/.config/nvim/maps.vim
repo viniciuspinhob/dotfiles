@@ -52,6 +52,7 @@ nnoremap <leader>> :vertical resize +10<CR>
 nmap <leader>fs <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For >")})<cr>
 nmap <leader>fw <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand("<word>")})<cr>
 nmap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nmap <leader>fF <cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<cr>
 nmap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nmap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nmap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>

@@ -113,7 +113,7 @@ EOF
 lua << EOF
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {"node_modules", ".git/", ".venv/", ".env/"},
+    file_ignore_patterns = {"node_modules", ".git/", ".venv/"},
     vimgrep_arguments = {
       "rg",
       "--color=never",
