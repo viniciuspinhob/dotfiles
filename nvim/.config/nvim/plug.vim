@@ -86,6 +86,9 @@ Plug 'mbbill/undotree'
 " Search and replace across project (like VSCode)
 Plug 'nvim-pack/nvim-spectre'
 
+" Auto-reload files when they change externally
+Plug 'djoshea/vim-auto-autoread'
+
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
@@ -181,3 +184,6 @@ EOF
 lua << EOF
 require('spectre').setup()
 EOF
+
+" Auto-autoread configuration
+let g:auto_autoread = 1
