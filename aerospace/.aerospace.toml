@@ -118,3 +118,9 @@ j = 'move-workspace-to-monitor down'
 # Sair do modo monitor
 enter = 'mode main'
 esc = 'mode main'
+
+# Forçar todas as janelas do workspace para Float
+alt-shift-f = "exec-and-forget bash -c \"aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format '%{window-id}' | xargs -I {} aerospace layout floating --window-id {}\""
+
+# Forçar todas as janelas do workspace de volta para a Grade (Tiling)
+alt-shift-t = "exec-and-forget bash -c \"aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format '%{window-id}' | xargs -I {} aerospace layout tiling --window-id {}\""
