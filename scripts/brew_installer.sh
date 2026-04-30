@@ -8,6 +8,7 @@
 # CLI tools / Code 
 brew install neovim fzf ranger bat fish stow tmux
 brew install --cask alacritty # deprecated
+brew install --cask iterm2
 brew install --cask visual-studio-code
 brew install --cask rancher
 
@@ -15,3 +16,6 @@ brew install --cask rancher
 brew install --cask nikitabobko/tap/aerospace
 brew install --cask monitorcontrol
 brew install --cask logi-options+
+
+# Other Apps
+brew install --cask spotify
