@@ -83,6 +83,10 @@ alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling
 alt-f = 'fullscreen'                        # Toggle fullscreen
 alt-z = 'fullscreen' # match tmux bindinds
 
+# Float/tiling all windows in workspace
+alt-shift-f = "exec-and-forget bash -c 'aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format \"%{window-id}\" | xargs -I {} aerospace layout floating --window-id {}'"
+alt-shift-t = "exec-and-forget bash -c 'aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format \"%{window-id}\" | xargs -I {} aerospace layout tiling --window-id {}'"
+
 # Resize mode
 alt-r = 'mode resize'
 
@@ -115,12 +119,4 @@ l = 'move-workspace-to-monitor right'
 k = 'move-workspace-to-monitor up'
 # Mover workspace atual para monitor abaixo
 j = 'move-workspace-to-monitor down'
-# Sair do modo monitor
-enter = 'mode main'
 esc = 'mode main'
-
-# Forçar todas as janelas do workspace para Float
-alt-shift-f = "exec-and-forget bash -c \"aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format '%{window-id}' | xargs -I {} aerospace layout floating --window-id {}\""
-
-# Forçar todas as janelas do workspace de volta para a Grade (Tiling)
-alt-shift-t = "exec-and-forget bash -c \"aerospace list-windows --workspace $(aerospace list-workspaces --focused) --format '%{window-id}' | xargs -I {} aerospace layout tiling --window-id {}\""
