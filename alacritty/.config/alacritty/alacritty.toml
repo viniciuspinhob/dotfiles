@@ -11,7 +11,7 @@ TERM = "xterm-256color"
 opacity = 1
 dimensions = { columns = 0, lines = 0 }
 padding = { x = 6, y = 6 }
-decorations = "None" # "Full" | "None" | "Transparent" | "Buttonless"
+decorations = "Full" # "Full" | "None" | "Transparent" | "Buttonless"
 decorations_theme_variant = "Dark"
 
 [font]
