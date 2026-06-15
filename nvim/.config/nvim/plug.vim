@@ -89,6 +89,9 @@ Plug 'nvim-pack/nvim-spectre'
 " Auto-reload files when they change externally
 Plug 'djoshea/vim-auto-autoread'
 
+" Log file syntax highlighting
+Plug 'mtdl9/vim-log-highlighting'
+
 call plug#end() " This line *must* be here to load the plugins and set runtime paths.
 " --- Plugin-specific configuration (after plugins are loaded) ---
 " These configurations need to be here, *after* call plug#end(),
