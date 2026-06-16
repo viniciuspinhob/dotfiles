@@ -14,5 +14,11 @@ set -gx LDFLAGS "-L/opt/homebrew/opt/node@22/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/node@22/include"
 
 # SDKMAN (note: bash/zsh specific, won't work in fish)
-# Consider using 'jabba' for Java version management in Fish
 set -gx SDKMAN_DIR "$HOME/.sdkman"
+
+# asdf Java - sets JAVA_HOME automatically
+. ~/.asdf/plugins/java/set-java-home.fish
+
+# asdf spark
+set -gx SPARK_HOME (asdf where spark)
+set -gx PATH $SPARK_HOME/bin $PATH

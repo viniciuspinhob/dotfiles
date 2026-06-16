@@ -15,6 +15,12 @@ export CPPFLAGS="-I/opt/homebrew/opt/node@22/include"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# asdf Java - sets JAVA_HOME automatically
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+# asdf Spark
+.  ~/.asdf/plugins/spark/set-spark-home.zsh
+
 # Sources the Zsh completion script for kubectl, if the command is available.
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
