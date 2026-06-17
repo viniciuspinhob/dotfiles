@@ -81,20 +81,80 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' },
 }
 
+local function get_python_path()
+  local venv = vim.fn.getcwd() .. '/.venv'
+  if vim.fn.isdirectory(venv) == 1 then
+    return venv .. '/bin/python'
+  end
+  return 'python3'
+end
+
 dap.configurations.python = {
   {
     type = 'python',
     request = 'launch',
     name = 'Launch file',
     program = '${file}',
-    python = function()
-      -- Try to use virtualenv python if available
-      local venv = vim.fn.getcwd() .. '/.venv'
-      if vim.fn.isdirectory(venv) == 1 then
-        return venv .. '/bin/python'
-      end
-      return 'python3'
+    python = get_python_path,
+    console = 'integratedTerminal',
+    justMyCode = false,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Launch module',
+    module = function()
+      return vim.fn.input('Module name: ')
     end,
+    python = get_python_path,
+    console = 'integratedTerminal',
+    justMyCode = false,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Pytest: arquivo atual',
+    module = 'pytest',
+    args = function()
+      return { vim.fn.expand('%:p'), '-v', '--no-header' }
+    end,
+    python = get_python_path,
+    console = 'integratedTerminal',
+    justMyCode = false,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Pytest: todos os testes',
+    module = 'pytest',
+    args = { 'tests/', '-v', '--no-header' },
+    python = get_python_path,
+    console = 'integratedTerminal',
+    justMyCode = false,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Pytest: função no cursor',
+    module = 'pytest',
+    args = function()
+      local file = vim.fn.expand('%:p')
+      local line = vim.fn.line('.')
+      local func_name = nil
+      for i = line, 1, -1 do
+        local text = vim.fn.getline(i)
+        local match = text:match('^%s*def (test_%w+)')
+        if match then
+          func_name = match
+          break
+        end
+      end
+      if func_name then
+        return { file .. '::' .. func_name, '-v', '--no-header' }
+      end
+      return { file, '-v', '--no-header' }
+    end,
+    python = get_python_path,
     console = 'integratedTerminal',
     justMyCode = false,
   },
@@ -103,13 +163,7 @@ dap.configurations.python = {
     request = 'attach',
     name = 'Attach to process',
     processId = require('dap.utils').pick_process,
-    python = function()
-      local venv = vim.fn.getcwd() .. '/.venv'
-      if vim.fn.isdirectory(venv) == 1 then
-        return venv .. '/bin/python'
-      end
-      return 'python3'
-    end,
+    python = get_python_path,
   },
 }
 
@@ -126,4 +180,6 @@ end
 
 -- Setup nvim-dap-python (installs debugpy automatically)
 require('dap-python').setup('python3')
+
+
 
