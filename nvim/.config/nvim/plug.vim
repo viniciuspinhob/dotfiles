@@ -183,6 +183,15 @@ lua << EOF
 require('gitsigns').setup()
 EOF
 
+" Treesitter configuration
+lua << EOF
+require("nvim-treesitter").setup({
+    highlight = { enable = true },
+    indent = { enable = true },
+    ensure_installed = { "python" },
+})
+EOF
+
 " Spectre setup
 lua << EOF
 require('spectre').setup()

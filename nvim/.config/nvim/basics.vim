@@ -35,3 +35,6 @@ set laststatus=3
 set splitright
 set spell
 set spelllang=en_us,pt_br
+set foldmethod=expr
+set foldexpr=v:lua.vim.treesitter.foldexpr()
+set foldlevel=99

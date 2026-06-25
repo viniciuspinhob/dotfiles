@@ -97,6 +97,10 @@ echo "Atualizando parsers do nvim-treesitter..."
 nvim --headless +TSUpdate +qa
 echo "Parsers do nvim-treesitter atualizados."
 
+echo "Instalando parser Python para treesitter..."
+nvim --headless "+TSInstall! python" +qa
+echo "Parser Python instalado."
+
 # --- 9. Instalar gadgets do Vimspector ---
 
 echo "Instalando gadgets do Vimspector (como debugpy)..."
