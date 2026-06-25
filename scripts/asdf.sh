@@ -4,7 +4,7 @@ asdf --version
 
 # PYTHON
 asdf plugin add python
-PYTHON_VERSION="3.14"
+PYTHON_VERSION="3.14.6"
 asdf install python "$PYTHON_VERSION"
 asdf set -u python "$PYTHON_VERSION"
 
