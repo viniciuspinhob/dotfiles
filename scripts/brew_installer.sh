@@ -6,7 +6,8 @@
 ## Install packages
 
 # CLI tools / Code 
-brew install neovim fzf ranger bat fish stow tmux asdf tree-sitter-cli
+brew install neovim fzf ranger bat fish stow tmux asdf tree-sitter-cli \
+    go-parquet-tools
 brew install --cask alacritty # deprecated
 brew install --cask iterm2
 brew install --cask visual-studio-code
