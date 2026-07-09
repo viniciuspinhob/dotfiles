@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Deprecated: use install-periodic-save.sh instead.
+
+  Install:
+    ~/Developer/dotfiles/scripts/tmux/install-periodic-save.sh install
+
+  Uninstall:
+    ~/Developer/dotfiles/scripts/tmux/install-periodic-save.sh uninstall
+
+  Status:
+    ~/Developer/dotfiles/scripts/tmux/install-periodic-save.sh status
+-->
+<plist version="1.0"><dict/></plist>
