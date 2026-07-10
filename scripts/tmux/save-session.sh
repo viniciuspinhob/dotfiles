@@ -15,7 +15,75 @@ source "$SCRIPT_DIR/lib.sh"
 SNAPSHOT="$TMUX_SNAPSHOT"
 TMP="${SNAPSHOT}.tmp"
 
-if ! tmux list-sessions &>/dev/null; then
+resolve_tmux_bin() {
+    local candidate
+
+    if [[ -n "${TMUX_BIN:-}" && -x "${TMUX_BIN}" ]]; then
+        printf '%s' "${TMUX_BIN}"
+        return 0
+    fi
+
+    for candidate in /opt/homebrew/bin/tmux /usr/local/bin/tmux /usr/bin/tmux; do
+        if [[ -x "$candidate" ]]; then
+            printf '%s' "$candidate"
+            return 0
+        fi
+    done
+
+    if command -v tmux >/dev/null 2>&1; then
+        command -v tmux
+        return 0
+    fi
+
+    printf ''
+}
+
+resolve_tmux_socket() {
+    local socket_dir="/private/tmp/tmux-$(id -u)"
+    local from_tmux="${TMUX:-}"
+    local candidate
+
+    from_tmux="${from_tmux%%,*}"
+
+    if [[ -n "${TMUX_SOCKET:-}" && -S "${TMUX_SOCKET}" ]]; then
+        printf '%s' "${TMUX_SOCKET}"
+        return 0
+    fi
+
+    if [[ -n "$from_tmux" && -S "$from_tmux" ]]; then
+        printf '%s' "$from_tmux"
+        return 0
+    fi
+
+    if [[ -S "${socket_dir}/default" ]]; then
+        printf '%s' "${socket_dir}/default"
+        return 0
+    fi
+
+    for candidate in "$socket_dir"/*; do
+        if [[ -S "$candidate" ]]; then
+            printf '%s' "$candidate"
+            return 0
+        fi
+    done
+
+    printf ''
+}
+
+TMUX_BIN="$(resolve_tmux_bin)"
+[[ -z "$TMUX_BIN" ]] && exit 0
+
+TMUX_SOCKET="$(resolve_tmux_socket)"
+
+tmux_cmd() {
+    if [[ -n "$TMUX_SOCKET" ]]; then
+        "$TMUX_BIN" -S "$TMUX_SOCKET" "$@"
+    else
+        "$TMUX_BIN" "$@"
+    fi
+}
+
+if ! tmux_cmd list-sessions &>/dev/null; then
     exit 0
 fi
 
@@ -37,10 +105,10 @@ while IFS=' ' read -r name attached; do
         active_session="$name"
         break
     fi
-done < <(tmux list-sessions -F '#{session_name} #{session_attached}')
+done < <(tmux_cmd list-sessions -F '#{session_name} #{session_attached}')
 
 if [[ -z "$active_session" ]]; then
-    active_session=$(tmux list-sessions -F '#{session_name}|#{session_last_attached}' \
+    active_session=$(tmux_cmd list-sessions -F '#{session_name}|#{session_last_attached}' \
         | sort -t'|' -k2 -rn | head -1 | cut -d'|' -f1)
 fi
 
@@ -63,7 +131,7 @@ mkdir -p "$(dirname "$SNAPSHOT")"
             printf ',\n'
         fi
 
-        active_window=$(tmux list-windows -t "$session" -F '#{window_index}|#{window_active}' \
+        active_window=$(tmux_cmd list-windows -t "$session" -F '#{window_index}|#{window_active}' \
             | awk -F'|' '$2==1{print $1; exit}')
         [[ -z "$active_window" ]] && active_window=1
 
@@ -101,15 +169,15 @@ mkdir -p "$(dirname "$SNAPSHOT")"
 
                 printf '            {"index": %s, "path": "%s"}' \
                     "$pane_index" "$(json_escape "$pane_path")"
-            done < <(tmux list-panes -t "${session}:${win_index}" -F '#{pane_index}|#{pane_current_path}')
+            done < <(tmux_cmd list-panes -t "${session}:${win_index}" -F '#{pane_index}|#{pane_current_path}')
 
             printf '\n          ]\n'
             printf '        }'
-        done < <(tmux list-windows -t "$session" -F '#{window_index}|#{window_name}|#{window_layout}|#{window_active}|#{pane_current_path}')
+        done < <(tmux_cmd list-windows -t "$session" -F '#{window_index}|#{window_name}|#{window_layout}|#{window_active}|#{pane_current_path}')
 
         printf '\n      ]\n'
         printf '    }'
-    done < <(tmux list-sessions -F '#{session_name}')
+    done < <(tmux_cmd list-sessions -F '#{session_name}')
 
     printf '\n  ]\n'
     printf '}\n'
