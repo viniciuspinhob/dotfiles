@@ -7,11 +7,12 @@
 
 # CLI tools / Code 
 brew install neovim fzf ranger bat fish stow tmux asdf tree-sitter-cli \
-    go-parquet-tools
+    go-parquet-tools docker
 brew install --cask alacritty # deprecated
 brew install --cask iterm2
 brew install --cask visual-studio-code
-brew install --cask rancher
+brew install orbstack
+# brew install --cask rancher
 
 # Customizations
 brew install --cask nikitabobko/tap/aerospace
