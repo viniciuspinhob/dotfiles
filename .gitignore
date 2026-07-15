@@ -2,5 +2,6 @@ nvim/.config/nvim/plugged
 **/*/*.DS_Store
 **/*.pyc
 **/__pycache__/*
+fish/.config/fish/fish_variables
 scripts/tmux/.session-snapshot
 scripts/tmux/.session-snapshot.tmp

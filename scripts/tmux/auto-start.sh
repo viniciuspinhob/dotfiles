@@ -44,6 +44,9 @@ if [[ -f "$SNAPSHOT" ]]; then
     if bash "$DOTFILES_DIR/scripts/tmux/restore-session.sh"; then
         attach_session "$(read_active_session)"
     fi
+
+    echo "tmux: snapshot restore failed." >&2
+    exit 1
 fi
 
 bash "$DOTFILES_DIR/scripts/tmux/bootstrap-geral.sh"

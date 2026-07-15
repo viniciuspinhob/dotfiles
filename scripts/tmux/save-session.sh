@@ -3,8 +3,8 @@
 #
 # Limitations:
 # - Does not save running processes inside panes
-# - Layout may vary slightly between tmux versions
-# - Delete .session-snapshot manually to reset to the default bootstrap layout
+# - Does not save pane sizes or layout (adapts to current terminal on restore)
+# - Auto-saved on window/pane changes via tmux hooks in .tmux.conf
 
 set -euo pipefail
 
@@ -14,6 +14,10 @@ source "$SCRIPT_DIR/lib.sh"
 
 SNAPSHOT="$TMUX_SNAPSHOT"
 TMP="${SNAPSHOT}.tmp"
+
+if [[ -f "$SAVE_SUSPEND_FILE" ]]; then
+    exit 0
+fi
 
 resolve_tmux_bin() {
     local candidate
@@ -141,7 +145,7 @@ mkdir -p "$(dirname "$SNAPSHOT")"
         printf '      "windows": [\n'
 
         first_window=true
-        while IFS='|' read -r win_index win_name layout _win_active win_path; do
+        while IFS='|' read -r win_index win_name _layout _win_active win_path; do
             [[ -z "$win_index" ]] && continue
 
             if [[ "$first_window" == true ]]; then
@@ -154,7 +158,6 @@ mkdir -p "$(dirname "$SNAPSHOT")"
             printf '          "index": %s,\n' "$win_index"
             printf '          "name": "%s",\n' "$(json_escape "$win_name")"
             printf '          "path": "%s",\n' "$(json_escape "$win_path")"
-            printf '          "layout": "%s",\n' "$(json_escape "$layout")"
             printf '          "panes": [\n'
 
             first_pane=true

@@ -21,3 +21,4 @@ resolve_dotfiles_dir() {
 DOTFILES_DIR="$(resolve_dotfiles_dir)"
 TMUX_SNAPSHOT="$DOTFILES_DIR/scripts/tmux/.session-snapshot"
 SAVE_SCRIPT="$DOTFILES_DIR/scripts/tmux/save-session.sh"
+SAVE_SUSPEND_FILE="$DOTFILES_DIR/scripts/tmux/.save-suspended"

@@ -17,6 +17,9 @@ if tmux has-session 2>/dev/null; then
     exit 1
 fi
 
+trap 'rm -f "$SAVE_SUSPEND_FILE"' EXIT
+touch "$SAVE_SUSPEND_FILE"
+
 python3 - "$SNAPSHOT" <<'PY'
 import json
 import os
@@ -25,6 +28,9 @@ import sys
 
 snapshot_path = sys.argv[1]
 home = os.environ["HOME"]
+
+MIN_WIDTH = 200
+MIN_HEIGHT = 50
 
 with open(snapshot_path, encoding="utf-8") as handle:
     data = json.load(handle)
@@ -39,6 +45,14 @@ if not sessions:
 
 def resolve_path(path):
     return path if os.path.isdir(path) else home
+
+
+def adaptive_layout(pane_count):
+    if pane_count <= 1:
+        return None
+    if pane_count == 2:
+        return "even-horizontal"
+    return "tiled"
 
 
 def run(*args, check=True):
@@ -82,13 +96,20 @@ try:
                 )
 
             panes = sorted(window.get("panes", []), key=lambda item: item["index"])
+
+            if len(panes) > 1:
+                run(
+                    "tmux", "resize-window", "-t", target,
+                    "-x", str(MIN_WIDTH), "-y", str(MIN_HEIGHT),
+                )
+
             for pane in panes[1:]:
                 pane_path = resolve_path(pane.get("path", home))
-                run("tmux", "split-window", "-t", target, "-c", pane_path)
+                run("tmux", "split-window", "-h", "-t", target, "-c", pane_path)
 
-            layout = window.get("layout")
-            if layout:
-                run("tmux", "select-layout", "-t", target, layout, check=False)
+            layout_name = adaptive_layout(len(panes))
+            if layout_name:
+                run("tmux", "select-layout", "-t", target, layout_name, check=False)
 
         run("tmux", "select-window", "-t", f"{name}:{active_window_name}", check=False)
 except RuntimeError as error:
