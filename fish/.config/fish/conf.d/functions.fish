@@ -12,14 +12,14 @@ function kconf
         echo "Usage: kconf <context>"
         echo "Available contexts:"
         for ctx in $contexts
-            set -l parts (string split ":" $ctx)
+            set -l parts (string split -m 1 ":" $ctx)
             echo "  $parts[1] - $parts[2]"
         end
         return 1
     end
 
     for ctx in $contexts
-        set -l parts (string split ":" $ctx)
+        set -l parts (string split -m 1 ":" $ctx)
         if test "$parts[1]" = "$argv[1]"
             kubectl config use-context "$parts[2]"
             return 0
@@ -42,14 +42,14 @@ function vspark
         echo "Usage: vspark <version>"
         echo "Available Spark versions:"
         for ver in $versions
-            set -l parts (string split ":" $ver)
+            set -l parts (string split -m 1 ":" $ver)
             echo "  $parts[1] - $parts[2]"
         end
         return 1
     end
 
     for ver in $versions
-        set -l parts (string split ":" $ver)
+        set -l parts (string split -m 1 ":" $ver)
         if test "$parts[1]" = "$argv[1]"
             set -gx SPARK_HOME "$parts[2]"
             set -gx SPARK_LOCAL_IP "127.0.0.1"
