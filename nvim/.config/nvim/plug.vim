@@ -9,6 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/everforest'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'lifepillar/vim-solarized8'
 
 " LSP Configuration
 Plug 'neovim/nvim-lspconfig'

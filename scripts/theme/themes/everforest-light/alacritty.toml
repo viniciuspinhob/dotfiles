@@ -1,0 +1,23 @@
+[colors.primary]
+background = '0xfffbef'
+foreground = '0x5c6a72'
+
+[colors.normal]
+black = '0xe6e2cc'
+red = '0xf85552'
+green = '0x8da101'
+yellow = '0xdfa000'
+blue = '0x3a94c5'
+magenta = '0xdf69ba'
+cyan = '0x35a77c'
+white = '0x5c6a72'
+
+[colors.bright]
+black = '0xa6b0a0'
+red = '0xf85552'
+green = '0x8da101'
+yellow = '0xdfa000'
+blue = '0x3a94c5'
+magenta = '0xdf69ba'
+cyan = '0x35a77c'
+white = '0x5c6a72'

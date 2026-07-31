@@ -1,5 +1,5 @@
 # Fish Shell Theme/Prompt - reads from ~/.config/theme
-# Use: switch-theme gruvbox|everforest|dracula
+# Use: switch-theme gruvbox|everforest|dracula|gruvbox-light|everforest-light|solarized-light
 
 set -l _dotfiles "$DOTFILES"
 test -z "$_dotfiles"; and set _dotfiles ~/Developer/dotfiles

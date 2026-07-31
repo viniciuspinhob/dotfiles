@@ -2,7 +2,7 @@
 
 DOTFILES_DIR="${DOTFILES:-$HOME/Developer/dotfiles}"
 THEMES_DIR="$DOTFILES_DIR/scripts/theme/themes"
-AVAILABLE_THEMES="gruvbox everforest dracula"
+AVAILABLE_THEMES="gruvbox everforest dracula gruvbox-light everforest-light solarized-light"
 
 usage() {
     echo "Usage: switch-theme <theme>"
@@ -41,6 +41,16 @@ echo "  [ok] ~/.config/theme"
 cp "$THEMES_DIR/$THEME/alacritty.toml" ~/.config/alacritty/colors.toml
 echo "  [ok] alacritty"
 
+ALACRITTY_CONFIG="$DOTFILES_DIR/alacritty/.config/alacritty/alacritty.toml"
+if [[ -f "$ALACRITTY_CONFIG" ]]; then
+    if [[ "$THEME" == *-light ]]; then
+        sed -i '' 's/^decorations_theme_variant = .*/decorations_theme_variant = "Light"/' "$ALACRITTY_CONFIG"
+    else
+        sed -i '' 's/^decorations_theme_variant = .*/decorations_theme_variant = "Dark"/' "$ALACRITTY_CONFIG"
+    fi
+    echo "  [ok] alacritty decorations"
+fi
+
 cp "$THEMES_DIR/$THEME/tmux.conf" ~/.config/tmux/current-theme.conf
 echo "  [ok] tmux"
 
@@ -54,9 +64,12 @@ fi
 RANGER_RC="$DOTFILES_DIR/ranger/.config/ranger/rc.conf"
 if [[ -f "$RANGER_RC" ]]; then
     case "$THEME" in
-        gruvbox)    RANGER_SCHEME="gruvbox_dark" ;;
-        everforest) RANGER_SCHEME="everforest_dark" ;;
-        dracula)    RANGER_SCHEME="dracula" ;;
+        gruvbox)           RANGER_SCHEME="gruvbox_dark" ;;
+        everforest)        RANGER_SCHEME="everforest_dark" ;;
+        dracula)           RANGER_SCHEME="dracula" ;;
+        gruvbox-light)     RANGER_SCHEME="gruvbox_light" ;;
+        everforest-light)  RANGER_SCHEME="everforest_light" ;;
+        solarized-light)   RANGER_SCHEME="solarized" ;;
     esac
     sed -i '' "s/^set colorscheme .*/set colorscheme $RANGER_SCHEME/" "$RANGER_RC"
     echo "  [ok] ranger"
