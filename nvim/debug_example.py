@@ -36,7 +36,7 @@ def baz(items):
     results = []
     for item in items:
         value = bar(item, item + 1)
-       results.append(value)
+        results.append(value)
     return results
 
 
