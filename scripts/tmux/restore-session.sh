@@ -111,6 +111,15 @@ try:
             if layout_name:
                 run("tmux", "select-layout", "-t", target, layout_name, check=False)
 
+            # resize-window -x/-y locks the window to manual size; clear it so
+            # the client can fill the terminal on attach (avoids unreclaimable gaps).
+            if len(panes) > 1:
+                run(
+                    "tmux", "set-window-option", "-t", target,
+                    "window-size", "latest",
+                    check=False,
+                )
+
         run("tmux", "select-window", "-t", f"{name}:{active_window_name}", check=False)
 except RuntimeError as error:
     subprocess.run(["tmux", "kill-server"], capture_output=True)
