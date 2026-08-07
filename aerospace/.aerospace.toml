@@ -69,7 +69,9 @@ outer.right = [
   { monitor."DELL.*" = 10 },
   { monitor."LG.*" = 50 },
   30
-]# Key bindings
+]
+
+# Key bindings
 [mode.main.binding]
 
 # Toggle between accordion and horizontal tiles
