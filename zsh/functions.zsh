@@ -22,7 +22,6 @@ kconf() {
 }
 
 # Spark
-export SPARK_HOME="~/Developer/tools/spark-3.5.1-bin-hadoop3"
 typeset -A spark_versions
 spark_versions=(
     [331]="$HOME/Developer/tools/spark-3.3.1-bin-hadoop3"

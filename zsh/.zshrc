@@ -1,5 +1,6 @@
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export SHELL="$(command -v zsh)"
 
 # Set name of the theme to load.
 # ZSH_THEME="robbyrussell"
@@ -11,7 +12,7 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autocomplete
     kubectl
-	)
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -19,8 +20,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/Developer/dotfiles/zsh/managed.zsh
 source ~/Developer/dotfiles/zsh/aliases.zsh
 source ~/Developer/dotfiles/zsh/functions.zsh
-source ~/Developer/dotfiles/zsh/theme.zsh
 source ~/Developer/dotfiles/zsh/inter.zsh
+source ~/Developer/dotfiles/zsh/theme.zsh
 
 export PATH="/Users/bi011312/.local/bin:$PATH"
 

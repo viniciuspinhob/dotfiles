@@ -1,11 +1,5 @@
 ### Managed Configurations ###
 
-# Initializes the Starship prompt, making the shell prompt customizable.
-# eval "$(starship init zsh)"
-
-# Adds the Rancher Desktop binary directory to the PATH, allowing its commands to be used.
-export PATH="/$HOME/.rd/bin:$PATH"
-
 # Adds the Node.js 22 binary directory to the PATH.
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/node@22/lib"
@@ -19,12 +13,14 @@ export SDKMAN_DIR="$HOME/.sdkman"
 . ~/.asdf/plugins/java/set-java-home.zsh
 
 # asdf Spark
-.  ~/.asdf/plugins/spark/set-spark-home.zsh
+export SPARK_HOME="$(asdf where spark)"
+export PATH="$SPARK_HOME/bin:$PATH"
 
 # Sources the Zsh completion script for kubectl, if the command is available.
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh 2>/dev/null)
 
 # Export PATHs
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
