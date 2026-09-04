@@ -39,17 +39,22 @@ echo "$THEME" > ~/.config/theme
 echo "  [ok] ~/.config/theme"
 
 cp "$THEMES_DIR/$THEME/alacritty.toml" ~/.config/alacritty/colors.toml
+cp "$THEMES_DIR/$THEME/alacritty.toml" "$DOTFILES_DIR/alacritty/.config/alacritty/colors.toml"
 echo "  [ok] alacritty"
 
-ALACRITTY_CONFIG="$DOTFILES_DIR/alacritty/.config/alacritty/alacritty.toml"
-if [[ -f "$ALACRITTY_CONFIG" ]]; then
-    if [[ "$THEME" == *-light ]]; then
-        sed -i '' 's/^decorations_theme_variant = .*/decorations_theme_variant = "Light"/' "$ALACRITTY_CONFIG"
-    else
-        sed -i '' 's/^decorations_theme_variant = .*/decorations_theme_variant = "Dark"/' "$ALACRITTY_CONFIG"
-    fi
-    echo "  [ok] alacritty decorations"
+variant="Dark"
+if [[ "$THEME" == *-light ]]; then
+    variant="Light"
 fi
+for ALACRITTY_CONFIG in \
+    "$HOME/.config/alacritty/alacritty.toml" \
+    "$DOTFILES_DIR/alacritty/.config/alacritty/alacritty.toml"
+do
+    if [[ -f "$ALACRITTY_CONFIG" ]]; then
+        sed -i '' "s/^decorations_theme_variant = .*/decorations_theme_variant = \"$variant\"/" "$ALACRITTY_CONFIG"
+    fi
+done
+echo "  [ok] alacritty decorations"
 
 cp "$THEMES_DIR/$THEME/tmux.conf" ~/.config/tmux/current-theme.conf
 echo "  [ok] tmux"
