@@ -1,0 +1,27 @@
+require("markdown-table-wrap").setup({
+    fit_to_window = true,
+    max_width_ratio = 0.95,
+    min_col_width = 8,
+    max_col_width = 50,
+    table_border = "rounded",
+    row_separator = true,
+    preview_mode = "reader",
+    auto_preview = true,
+    render_all = true,
+    reader = {
+        auto_open = "has_table",
+        wrap = true,
+        linebreak = false,
+        breakindent = true,
+    },
+    highlight_preset = "render_markdown",
+    highlights = {
+        border = { fg = "#928374" },
+        header = { fg = "#d79921", bold = true },
+        inline = { fg = "#ebdbb2" },
+        code = { fg = "#ebdbb2" },
+        link = { fg = "#ebdbb2" },
+        bold = { fg = "#ebdbb2", bold = true },
+        italic = { fg = "#ebdbb2", italic = true },
+    },
+})

@@ -1,4 +1,7 @@
 require('render-markdown').setup({
+    pipe_table = {
+        enabled = false,
+    },
     link = {
         -- Turn on / off inline link icon rendering.
         enabled = true,

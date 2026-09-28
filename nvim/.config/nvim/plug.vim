@@ -77,6 +77,7 @@ Plug 'numToStr/Comment.nvim'
 
 " Markdown Rendering
 Plug 'MeanderingProgrammer/render-markdown.nvim'
+Plug 'ice345/markdown-table-wrap.nvim'
 
 " Git viewer on file
 Plug 'lewis6991/gitsigns.nvim'
