@@ -60,14 +60,14 @@ outer.bottom = [
 outer.left = [
   { monitor."Built-in.*" = 0 },
   { monitor."DELL.*" = 10 },
-  { monitor."LG.*" = 50 },
+  { monitor."LG.*" = 100 },
   30
 ]
 
 outer.right = [
   { monitor."Built-in.*" = 0 },
   { monitor."DELL.*" = 10 },
-  { monitor."LG.*" = 50 },
+  { monitor."LG.*" = 100 },
   30
 ]
 
