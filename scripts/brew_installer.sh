@@ -22,3 +22,4 @@ brew install --cask logi-options+
 
 # Other Apps
 brew install --cask spotify
+brew install --cask google-chrome
